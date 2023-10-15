@@ -1,0 +1,7 @@
+.container {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    border-radius: 0.5em;
+    background-image: radial-gradient(circle, #ccd8d9, #9cc7c4, #6fb5a6, #48a281, #2d8d55, #388a48, #42863b, #4b822e, #658f45, #7c9d5c, #93aa74, #a8b88d);
+}
