@@ -1,7 +1,9 @@
 header {
     text-align: center;
-    margin: 0;
+    margin: 0 0 0.5em 0;
     padding: 0;
+    border-radius: 0.5em 0.5em 0 0;
+    background-image: radial-gradient(circle, #ccd8d9, #9cc7c4, #6fb5a6, #48a281, #2d8d55, #388a48, #42863b, #4b822e, #658f45, #7c9d5c, #93aa74, #a8b88d);
 }
 
 h1 {

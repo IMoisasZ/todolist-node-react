@@ -1,0 +1,14 @@
+.containerSelect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.select {
+    width: 100%;
+    height: 4em;
+    border-radius: 0.5em;
+    text-align: center;
+}

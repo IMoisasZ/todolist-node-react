@@ -1,0 +1,32 @@
+* {
+    font-family: 'Coming Soon', cursive;
+}
+
+.containerMessages {
+    width: 100%;
+    padding: 1em 0;
+}
+
+.error, .success, .alter {
+    width: 100%;
+    padding: 0.5em 0;
+    border-radius: 0.5em;
+    border: none;
+    text-align: center;
+    font-size: large;
+}
+
+.error {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.success {
+    background-color: #003600;
+    color: #fff;
+}
+
+.alter {
+    background-color: rgb(178, 116, 0);
+    color: #fff;
+}

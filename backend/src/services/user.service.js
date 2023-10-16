@@ -15,6 +15,7 @@ async function createUser(user) {
 
 async function updateUser(user) {
 	try {
+		user.password = hashPassword(user.password)
 		return UserRepository.updateUser(user)
 	} catch (error) {
 		throw error

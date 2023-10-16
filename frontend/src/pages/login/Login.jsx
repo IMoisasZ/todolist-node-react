@@ -1,47 +1,45 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Container from '../../components/container/Container'
 import Form from '../../components/form/Form'
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
+import Link from '../../components/link/Link'
+import Messages from '../../components/messages/Messages'
 import EsqueciSenha from '../esqueciSenha/EsqueciSenha'
 import styles from './Login.module.css'
-import api from '../../api/api'
+import { AuthContext } from '../../context/auth'
 
 export default function Login() {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
-	const [dataUser, setDataUser] = useState('')
-	const [message, setMessage] = useState('')
+	const [showMessage, setShowMessage] = useState('')
 	const [screen, setScreen] = useState('login')
 
-	const getDataUser = async (user) => {
-		try {
-			const { data } = await api.post(`login`, {
-				username,
-				password,
-			})
-			setDataUser(data)
-			setMessage({ type: 'success', message: `Seja bem vindo ${data.name}` })
-			setTimeout(() => {
-				handleClear()
-			}, 2000)
-		} catch (error) {
-			setMessage({ type: 'error', message: error.response.data.erros })
-			console.log(error.response.data.erros)
-		}
-	}
+	const { login, userLoged, message } = useContext(AuthContext)
+
+	const navigate = useNavigate()
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		getDataUser()
+		try {
+			login(username, password)
+			setShowMessage(message)
+			setTimeout(() => {
+				navigate('/tasks', { replace: true })
+			}, 2000)
+		} catch (error) {
+			setShowMessage(message)
+		}
 	}
 
 	const handleClear = () => {
 		setUsername('')
 		setPassword('')
-		setDataUser('')
-		setMessage('')
+		setShowMessage('')
 	}
+
+	console.log(userLoged)
 
 	return (
 		<Container>
@@ -54,7 +52,7 @@ export default function Login() {
 					</p>
 
 					<Form
-						handleOnSubmit={(e) => handleSubmit(e)}
+						handleOnSubmit={(e) => handleSubmit(e, username, password)}
 						width='28%'>
 						<Input
 							name='username'
@@ -79,15 +77,18 @@ export default function Login() {
 							backgroundColor='#F9F871'
 						/>
 						<div className={styles.adds}>
-							<a
-								href='/#'
-								onClick={() => setScreen('esqueci_senha')}>
-								Escqueci a senha
-							</a>
-							<p>|</p>
-							<a href='/#'>Não tenho cadastro</a>
+							<Link
+								to='/'
+								handleOnClick={() => setScreen('esqueci_senha')}
+								description='Escqueci a senha'
+							/>
+							<span>|</span>
+							<Link
+								to='/user'
+								description='Não tenho cadastro'
+							/>
 						</div>
-						{message && <p>{message.message}</p>}
+						{showMessage && <Messages message={message} />}
 					</Form>
 				</div>
 			) : (

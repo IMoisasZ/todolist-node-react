@@ -1,0 +1,16 @@
+.containerUser {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.containerPassword {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    
+}
+

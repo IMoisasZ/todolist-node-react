@@ -8,6 +8,7 @@ export default function Button({
 	value = '',
 	titleBtn = 'title btn',
 	backgroundColor,
+	hide = false,
 	margin,
 }) {
 	return (
@@ -15,6 +16,7 @@ export default function Button({
 			<button
 				style={{ backgroundColor, margin }}
 				disabled={disabled}
+				hidden={hide}
 				title={titleBtn}
 				onClick={handleOnClick}
 				type={type}

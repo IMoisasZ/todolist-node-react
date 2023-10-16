@@ -1,5 +1,4 @@
 import UserRepository from '../repositories/user.repository.js'
-import { decryptPassword } from '../utills/hash.utill.js'
 
 async function basicAuth(user) {
 	try {
@@ -16,7 +15,7 @@ async function basicAuth(user) {
 			return `Usuário não existe!`
 		}
 
-		if (!decryptPassword(user.password, userDatabase.password)) {
+		if (user.password !== userDatabase.password) {
 			return `As senhas não conferem`
 		}
 

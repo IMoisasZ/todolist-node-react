@@ -5,6 +5,7 @@ import winston from 'winston'
 import UserRoutes from './src/routes/user.route.js'
 import LoginRoutes from './src/routes/login.route.js'
 import SendEmailRoutes from './src/routes/sendEmail.route.js'
+import TasksRoutes from './src/routes/todolist.route.js'
 
 export const pathDatabaseTodolist = 'src/databse/todolist.json'
 export const pathDatabaseUsers = 'src/databse/users.json'
@@ -18,6 +19,7 @@ app.use(cors())
 app.use('/users', UserRoutes)
 app.use('/login', LoginRoutes)
 app.use('/send_email', SendEmailRoutes)
+app.use('/tasks', TasksRoutes)
 
 // winston(log)
 const { combine, timestamp, label, printf } = winston.format
